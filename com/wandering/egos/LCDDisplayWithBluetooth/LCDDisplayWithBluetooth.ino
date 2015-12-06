@@ -1,12 +1,6 @@
 #include <Boards.h>
 #include <Firmata.h>
 
-//Jeremy Blum's Arduino Tutorial Series - Episode 13 - LCDs
-//Sample Code - LCD Progress Bar
-//http://www.jeremyblum.com
-//LiquidCrystal library by David A. Mellis, Limor Fried (http://www.ladyada.net), and Tom Igoe
-//http://www.arduino.cc/en/Tutorial/LiquidCrystal
-
 /* 
   The circuit:
  * LCD RS pin to digital pin 2
