@@ -75,7 +75,9 @@ byte p100[8] = {
 void setup() {
   // set up the LCD's number of columns and rows: 
   lcd.begin(16, 2);
-
+  
+  //TODO : disabling this will make the bluetooth connection fail. The device does not show up.
+ //TODO : When we enable this then the LCD shows garbled messages. 
   ble_set_pins(3, 2);
 
   ble_begin();
@@ -83,8 +85,9 @@ void setup() {
   //Create Serial Object
   Serial.begin(9600);
   
-  // Print a message to the LCD.
-  //lcd.print("Hello Worldsome");
+  //TODO: Does not do anything, the LCD shows garbled text.  
+  //something to do with the 3 and 2 pins ?
+  lcd.print("Hello Worldsome");
   
   //Make progress characters
   lcd.createChar(0, p20);
@@ -95,10 +98,12 @@ void setup() {
 }
 
 void loop() {
- lcd.setCursor(0,1);
- lcd.print("                ");   
+  //TODO : enabling any write operation here makes the BLE shield not show up
+  // in the simple chat application. 
+ //lcd.setCursor(0,1);
+ //lcd.print("                ");   
  
- for (int i = 0; i<16; i++)
+ /*for (int i = 0; i<16; i++)
  {
    
    for (int j=0; j<5; j++)
@@ -107,7 +112,7 @@ void loop() {
       lcd.write(j);
       delay(100);
     } 
- }
+ }*/
 
   if (ble_available()) {
     // wait a bit for the entire message to arrive
@@ -120,6 +125,8 @@ void loop() {
       lcd.write(ble_read());
     }
   }
+  
+  ble_do_events();
 }
 
 
